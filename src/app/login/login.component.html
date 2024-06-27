@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="login-form">
+    <h2 style="font-size: 24px; font-weight: bold;">登录</h2>
+    <form (ngSubmit)="login()">
+      <input
+        type="text"
+        id="username"
+        [(ngModel)]="username"
+        name="username"
+        placeholder="用户名"
+        required
+      />
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="密码"
+        required
+      />
+      <button type="submit">登录</button>
+    </form>
+    <button (click)="goToRegister()" class="register-button">注册</button>
+  </div>
+</div>
+
