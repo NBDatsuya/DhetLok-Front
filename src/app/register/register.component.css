@@ -1,6 +1,9 @@
+@tailwind components;
+
 body,
 html {
   margin: 0;
+  padding: 0;
   font-family: "PingFang SC", "Microsoft Yahei", sans-serif;
 }
 
@@ -13,11 +16,11 @@ html {
   background: url("background.jpg") fixed no-repeat;
   background-size: cover;
 }
-
+/*
 .register-form {
-  /* 使用与.login-form相似的样式，但可能有些微调 */
-  width: 300px; /* 根据需要调整宽度 */
-  height: auto; /* 允许表单高度根据内容自适应 */
+   使用与.login-form相似的样式，但可能有些微调 
+  width: 300px;  根据需要调整宽度 
+  height: auto;  允许表单高度根据内容自适应 
   display: flex;
   flex-direction: column;
   padding: 40px;
@@ -26,27 +29,39 @@ html {
   z-index: 100;
   background: inherit;
   border-radius: 18px;
-  overflow: hidden; /* 隐藏多余的模糊效果 */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+  overflow: hidden;  隐藏多余的模糊效果 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 添加阴影效果 
+}*/
+@layer components {
+  .register-form {
+    @apply bg-white/50 h-auto flex flex-col p-16 space-y-4;
+  }
+  .form-title {
+    @apply text-[#3d5245] font-semibold text-2xl text-center;
+  }
+  .form-field {
+    @apply flex justify-between items-center inline-flex;
+  }
+  .register-form input {
+    @apply my-2 h-8 default:border-none
+   focus:border-emerald-700 focus:border-2 focus:border-collapse
+    bg-white/60 rounded-[4px] px-6
+    text-[#3d5245] cursor-pointer;
+  }
+  .register-form button {
+    @apply my-2 h-8 default:border-none hover:bg-[#3d5245] hover:text-slate-100
+    focus:border-emerald-700 focus:border-2 focus:border-collapse
+     bg-white/60 rounded-[4px] px-6
+     text-[#3d5245] cursor-pointer;
+  }
 }
 
+/*
 .register-form h2 {
   font-size: 18px;
   font-weight: 400;
-  color: #3d5245;
-}
-
-.register-form input,
-.register-form button {
-  margin: 6px 0;
-  height: 36px;
-  border: none;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
-  padding: 0 14px;
-  color: #3d5245;
-  cursor: pointer; /* 注意：仅在按钮上需要此属性 */
-}
+  color: ;
+}*/
 
 /* 对于选择框（select）的样式 */
 .register-form select {
@@ -73,7 +88,7 @@ html {
   /* 这里使用与.login-form中相似的样式，但可能有些不同 */
   width: 100%; /* 使其占据整个容器宽度 */
   margin-top: 10px; /* 与表单其他部分保持间距 */
-  background-color: #3d5245/* 您可以指定一个更明显的颜色 */;
+  background-color: #3d5245 /* 您可以指定一个更明显的颜色 */;
   border-radius: 4px;
   padding: 0 14px;
   color: #fff; /* 如果背景色较深，可能需要白色文字 */
