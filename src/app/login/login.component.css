@@ -1,0 +1,60 @@
+body,
+html {
+  margin: 0;
+  font-family: "PingFang SC", "Microsoft Yahei", sans-serif;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("background.jpg") fixed no-repeat;
+  background-size: cover;
+}
+
+.login-form {
+  width: 300px; /* 增加宽度 */
+  height: 280px; /* 增加高度 */
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  text-align: center;
+  position: relative;
+  z-index: 100;
+  background: inherit;
+  border-radius: 18px;
+  overflow: hidden; /* 隐藏多余的模糊效果 */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+}
+
+.login-form h2 {
+  font-size: 18px;
+  font-weight: 400;
+  color: #3d5245;
+}
+
+.login-form input,
+.login-form button,
+.register-button {
+  margin: 6px 0;
+  height: 36px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  padding: 0 14px;
+  color: #3d5245;
+  cursor: pointer; /* 添加鼠标悬停时的样式 */
+}
+
+.register-button {
+  width: 100%; /* 使其占据整个容器宽度 */
+  margin-top: 10px; /* 与登录表单保持一些间距 */
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  padding: 0 14px;
+  color: #3d5245;
+  cursor: pointer; /* 添加鼠标悬停时的样式 */
+}
+
