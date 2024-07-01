@@ -1,0 +1,28 @@
+<div class="search-box">
+  <input type="text" placeholder="搜索歌曲，艺人，曲风..."/>
+  <button>搜索</button>
+</div>
+
+<div class="search-result">
+  <div class="search-result-title">
+    <span>搜索结果</span>
+  </div>
+  <div>
+    我是分割线
+  </div>
+
+  <section>
+    <ul class="result-list">
+      @for (item of searchResult; track item) {
+        <li class="list-item">
+          <div>我是图标哦</div>
+          <div class="flex-1">{{ item.title }}</div>
+          <div>收藏按钮</div>
+          <div>{{ item.artist }}</div>
+          <div>欧美流行</div>
+          <div>点击量：{{ item.hits }}</div>
+        </li>
+      }
+    </ul>
+  </section>
+</div>
