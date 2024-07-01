@@ -1,15 +1,23 @@
-import { Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import {Routes} from '@angular/router';
 // 路由列表
-// typescript 强类型
 export const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent,
-  },
-  {
+    loadComponent: () => import('./login/login.component').then(c => c.LoginComponent)
+  }, {
     path: 'register',
-    component: RegisterComponent,
-  },
+    loadComponent: () => import('./register/register.component').then(c => c.RegisterComponent),
+  }, {
+    path: '',
+    loadComponent: () => import('../layouts/main-layout/main-layout.component').then(c => c.MainLayoutComponent),
+    children: [
+      {
+        path: "home",
+        loadComponent: () => import('./home/home.component').then(c => c.HomeComponent),
+      }, {
+        path: "search",
+        loadComponent: () => import('./search/search.component').then(c => c.SearchComponent),
+      }
+    ]
+  }
 ];
