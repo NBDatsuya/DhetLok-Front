@@ -17,6 +17,18 @@ export const routes: Routes = [
       }, {
         path: "search",
         loadComponent: () => import('./search/search.component').then(c => c.SearchComponent),
+      },{
+        path:'top-list',
+        loadComponent: ()=>import('./top-list/top-list.component').then(c=>c.ToplistComponent)
+      },{
+        path:'artist',
+        loadComponent: ()=>import('./artist/artist.component').then(c=>c.ArtistComponent)
+      },{
+        path:'my-music',
+        loadComponent: ()=>import('./collect/collect.component').then(c=>c.MyMusicComponent)
+      },{
+        path:'genre',
+        loadComponent: ()=>import('./genre/genre.component').then(c=>c.StyleComponent)
       }
     ]
   }
