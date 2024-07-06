@@ -1,0 +1,25 @@
+<div class="search-box">
+  <input type="text"  placeholder="搜索歌曲，艺人，曲风..." />
+  <button (click)="searchSongs()">搜索</button>
+</div>
+
+<div class="search-result" *ngIf="searchResult.length > 0">
+  <div class="search-result-title">
+    <span>搜索结果</span>
+  </div>
+  <div>我是分割线</div>
+
+  <section>
+    <ul class="result-list">
+      <li class="list-item" *ngFor="let song of searchResult">
+        <div>我是图标哦</div>
+        <div class="flex-1">{{ song.song_name }}</div>
+        <div>收藏按钮</div>
+        <div>{{ song.singer }}</div>
+        <div>点击量：{{ song.hits }}</div>
+      </li>
+    </ul>
+  </section>
+</div>
+
+<div *ngIf="searchResult.length === 0">没有找到结果</div>
