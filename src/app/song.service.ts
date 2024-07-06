@@ -3,22 +3,7 @@ import {catchError, Observable, of, tap,} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {MessageService} from "./message.service";
 
-export interface Artist {
-  id: number;
-  artist_name: string;
-  style: number;
-  img_url: string;
-  hot: boolean;
-}
 
-export interface Song {
-  id: number;
-  song_name: string;
-  singer: string;
-  file_url: string;
-  hits: number;
-  style: number;
-}
 
 @Injectable({
   providedIn: 'root'
