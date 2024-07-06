@@ -5,6 +5,7 @@ import {AppComponent} from './app.component';
 import {FormsModule} from "@angular/forms";
 import {RegisterComponent} from './register/register.component';
 import {provideHttpClient, withInterceptorsFromDi} from "@angular/common/http";
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [],
