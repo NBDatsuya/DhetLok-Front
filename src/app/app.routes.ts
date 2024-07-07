@@ -1,4 +1,5 @@
 import {Routes} from '@angular/router';
+import {immediateProvider} from "rxjs/internal/scheduler/immediateProvider";
 // 路由列表
 export const routes: Routes = [
   {
@@ -30,6 +31,21 @@ export const routes: Routes = [
         path:'genre',
         loadComponent: ()=>import('./genre/genre.component').then(c=>c.StyleComponent)
       }*/
+    ]
+  }, {
+    path: 'admin',
+    loadComponent: () => import('../layouts/admin-layout/admin-layout.component').then(c => c.AdminLayoutComponent),
+    children: [
+      {
+        path: "index",
+        loadComponent: () => import('../admin-app/index/index.component').then(c => c.IndexComponent)
+      },{
+        path: "song",
+        loadComponent: () => import('../admin-app/song/song.component').then(c => c.SongComponent)
+      },{
+        path: "artist",
+        loadComponent: () => import('../admin-app/artist/artist.component').then(c => c.ArtistComponent)
+      },
     ]
   }
 ];

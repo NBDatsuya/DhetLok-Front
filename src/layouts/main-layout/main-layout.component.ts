@@ -77,5 +77,9 @@ export class MainLayoutComponent {
   logout() {
   }
 
+  async goLogin() {
+    await this.router.navigate(["/login"])
+  }
+
   protected readonly localStorage = localStorage;
 }

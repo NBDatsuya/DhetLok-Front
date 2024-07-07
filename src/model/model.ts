@@ -1,8 +1,8 @@
 export interface Artist {
   id: number;
-  real_name: string;
+  realName: string;
   genre: number;
-  img_url: string;
+  imgUrl: string;
   hot: boolean;
 }
 
@@ -10,7 +10,7 @@ export interface Song {
   id: number;
   realName: string;
   artist: string;
-  file_url: string;
+  fileUrl: string;
   hits: number;
   genre: number;
 }

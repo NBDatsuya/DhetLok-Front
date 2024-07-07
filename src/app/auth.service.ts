@@ -46,4 +46,11 @@ export class AuthService {
       })
     );
   }
+
+  adminLogin(username: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/user/admin-login`, {
+      username: username,
+      password: password
+    });
+  }
 }

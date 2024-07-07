@@ -1,22 +1,19 @@
+@tailwind components;
+
 body,
 html {
   margin: 0;
+  padding: 0;
   font-family: "PingFang SC", "Microsoft Yahei", sans-serif;
 }
 
-.container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: url("background.jpg") fixed no-repeat;
-  background-size: cover;
-}
 
+
+/*
 .login-form {
-  width: 300px; /* 增加宽度 */
-  height: 280px; /* 增加高度 */
+   使用与.login-form相似的样式，但可能有些微调
+  width: 300px;  根据需要调整宽度
+  height: auto;  允许表单高度根据内容自适应
   display: flex;
   flex-direction: column;
   padding: 40px;
@@ -25,36 +22,79 @@ html {
   z-index: 100;
   background: inherit;
   border-radius: 18px;
-  overflow: hidden; /* 隐藏多余的模糊效果 */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+  overflow: hidden;  隐藏多余的模糊效果
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 添加阴影效果
+}*/
+@layer components {
+  .container {
+    @apply min-w-[100vw] min-h-screen flex items-center justify-center
+    bg-[url("background.jpg")] bg-fixed bg-no-repeat
+    bg-cover
+  }
+
+  .login-form {
+    @apply bg-white/50 h-auto flex flex-col px-16 py-10 space-y-4 rounded-lg
+  }
+
+  .form-title {
+    @apply text-[#3d5245] font-semibold text-2xl text-center
+  }
+
+  .form-field {
+    @apply flex justify-between items-center space-x-4;
+  }
+
+  .login-form input {
+    @apply my-2 h-8 focus:border-emerald-700 focus:border-2
+    default:border-0  outline-none
+    focus:border-collapse
+    bg-white/60 rounded-[4px] px-6
+    text-[#3d5245]
+  }
+
+  .login-form button {
+    @apply my-2 h-8 default:border-none hover:bg-[#3d5245] hover:text-slate-100
+    focus:border-emerald-700 focus:border-2 focus:border-collapse
+    bg-white/60 rounded-[4px] px-6
+    text-[#3d5245] cursor-pointer;
+  }
 }
 
+/*
 .login-form h2 {
   font-size: 18px;
   font-weight: 400;
-  color: #3d5245;
-}
+  color: ;
+}*/
 
-.login-form input,
-.login-form button,
-.register-button {
+/* 对于选择框（select）的样式 */
+.login-form select {
   margin: 6px 0;
   height: 36px;
   border: none;
-  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 4px;
   padding: 0 14px;
   color: #3d5245;
-  cursor: pointer; /* 添加鼠标悬停时的样式 */
+  background-color: rgba(255, 255, 255, 0.3);
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari 和 Chrome */
+  appearance: none; /* 标准语法 */
+  /* 添加自定义箭头或样式（如果需要） */
 }
 
-.register-button {
+/* 如果需要自定义选择框的箭头，可以使用以下伪元素样式 */
+.login-form select::-ms-expand {
+  display: none; /* 移除IE默认的下拉箭头 */
+}
+
+/* 注册按钮可能需要一些特别的样式 */
+.login-form .login-button {
+  /* 这里使用与.login-form中相似的样式，但可能有些不同 */
   width: 100%; /* 使其占据整个容器宽度 */
-  margin-top: 10px; /* 与登录表单保持一些间距 */
-  background-color: rgba(255, 255, 255, 0.3);
+  margin-top: 10px; /* 与表单其他部分保持间距 */
+  background-color: #3d5245 /* 您可以指定一个更明显的颜色 */;
   border-radius: 4px;
   padding: 0 14px;
-  color: #3d5245;
+  color: #fff; /* 如果背景色较深，可能需要白色文字 */
   cursor: pointer; /* 添加鼠标悬停时的样式 */
 }
-

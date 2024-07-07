@@ -1,25 +1,27 @@
 <div class="container">
   <div class="login-form">
-    <h2 style="font-size: 24px; font-weight: bold;">后台登录</h2>
-    <form>
+    <h2 class="form-title">沙丁鱼后台登录</h2>
+    <div class="form-field"><label for="username">用户名：</label>
       <input
         type="text"
         id="username"
         name="username"
         placeholder="用户名"
         required
+        [(ngModel)]="username"
       />
+    </div>
+    <div class="form-field"><label for="password">密码：</label>
       <input
         type="password"
         id="password"
         name="password"
+        [(ngModel)]="password"
         placeholder="密码"
         required
       />
-    </form>
-    <div>
-      <button (click)="alert('dfdf')" class="register-button">登陆</button>
     </div>
+    <button type="submit" (click)="login()" >登陆</button>
   </div>
 </div>
 
