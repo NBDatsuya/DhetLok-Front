@@ -18,8 +18,8 @@ interface Song {
   selector: 'app-top-list',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './toplist.component.html',
-  styleUrl: './toplist.component.css'
+  templateUrl: './top-list.component.html',
+  styleUrl: './top-list.component.css'
 })
 export class ToplistComponent implements OnInit {
   searchResult: Song[] = [];

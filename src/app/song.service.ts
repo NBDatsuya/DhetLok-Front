@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {catchError, Observable, of, tap,} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {MessageService} from "./message.service";
+import {Artist, Song} from "../model/model";
 
 
 
@@ -10,8 +10,7 @@ import {MessageService} from "./message.service";
 })
 
 export class SongService {
-  constructor(private messageService: MessageService,
-              private http: HttpClient) {
+  constructor(private http: HttpClient) {
   }
 
   // 可赋值一个变量，泛型编程
@@ -52,22 +51,22 @@ export class SongService {
   updateSong(song: Song): Observable<any> {
     const url = `${this.songURL}/updatesong/${song.id}`;
     const updateData = {
-      song_name: song.song_name,
-      singer: song.singer,
+      realName: song.realName,
+      artist: song.artist,
       file_url: song.file_url,
       hits: song.hits,
-      style: song.style
+      genre: song.genre
     };
 
     return this.http.post(url, updateData, this.httpOptions).pipe(
-      tap(_ => this.log(`更新歌曲：${song.song_name}`)),
+      tap(_ => this.log(`更新歌曲：${song.realName}`)),
       catchError(this.handleError<any>('updateSong'))
     );
   }
   addSong(song: Song): Observable<any> {
     console.log(song);
     return this.http.post<any>(`${this.songURL}/addsong`, song, this.httpOptions).pipe(
-      tap(() => this.log(`添加新的歌曲信息，歌曲名为${song.song_name}`)),
+      tap(() => this.log(`添加新的歌曲信息，歌曲名为${song.realName}`)),
       catchError(this.handleError<any>('addSong'))
     );
   }
