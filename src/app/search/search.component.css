@@ -1,9 +1,0 @@
-@tailwind components;
-@layer components{
-  .result-list{
-    @apply divide-y divide-slate-100
-  }
-  .list-item{
-    @apply flex gap-4 px-4 py-3 space-x-3 hover:bg-slate-100
-  }
-}
