@@ -54,7 +54,7 @@ export class SongComponent implements OnInit {
   }
 
   deleteItem(id: number) {
-    let result = confirm("请问要删除吗？删除的数据无法恢复！")
+    let result = confirm("请问要删除吗？ 删除的数据无法恢复！")
     if (!result) return
 
     this.dataService.deleteSong(id).subscribe();

@@ -4,7 +4,7 @@ import { SongComponent } from './song.component';
 
 describe('SongComponent', () => {
   let component: SongComponent;
-  let fixture: ComponentFixture<SongComponent>;
+  let fixture:  ComponentFixture<SongComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
