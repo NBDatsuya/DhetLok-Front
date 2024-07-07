@@ -1,0 +1,33 @@
+<div class="collect-result">
+  <div class="collect-result-title">
+    <span>收藏结果</span>
+  </div>
+  <div class="w-100
+  border-t border-gray-400 mt-4 mb-4"></div>
+
+
+  <section>
+    <ul class="result-list">
+      @for (item of collectResult; track item) {
+        <li class="list-item">
+          <img :src="item.img_url" alt="Item Image" class="w-32 h-32 hover:w-36 hover:h-36">
+          <div class="flex-1">{{ item.title }}</div>
+          <div>{{ item.artist }}</div>
+          <div>{{ item.genre }}</div>
+          <div>
+            <button type="button"
+                    class="rounded-lg border border-yellow-500 bg-yellow-500 px-4 py-1 text-center text-sm font-medium
+                     text-white shadow-sm transition-all
+                     hover:border-yellow-700 hover:bg-yellow-700
+                      focus:ring focus:ring-yellow-200
+                      disabled:cursor-not-allowed
+                      disabled:border-yellow-300
+                      disabled:bg-yellow-300">
+              播放音乐</button>
+          </div>
+        </li>
+      }
+    </ul>
+  </section>
+</div>
+
