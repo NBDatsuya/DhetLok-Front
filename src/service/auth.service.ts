@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
 })
 export class AuthService {
   private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false');
-  private apiUrl = 'http://localhost:4200/api';  // 设置后端API基地址
+  private apiUrl = '/api/user';  // 设置后端API基地址
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -19,7 +19,7 @@ export class AuthService {
   }
 
   get isLoggedIn() {
-    console.log(JSON.parse(localStorage.getItem('loggedIn') || this.loggedInStatus.toString()))
+    //console.log(JSON.parse(localStorage.getItem('loggedIn') || this.loggedInStatus.toString()))
     return JSON.parse(localStorage.getItem('loggedIn') || this.loggedInStatus.toString());
   }
 

@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
 import {catchError, Observable, of, tap,} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {MessageService} from "./message.service";
 
 
+import {Song, Artist} from "../model/model";
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class SongService {
-  constructor(private messageService: MessageService,
-              private http: HttpClient) {
+
+  private apiUrl:string = '/api/song'
+  httpOptions = {
+    headers: new HttpHeaders(
+      {'Content-Type': 'application/json'})
+  }
+
+  constructor(private http: HttpClient) {
   }
 
   // 可赋值一个变量，泛型编程
@@ -27,47 +32,45 @@ export class SongService {
     console.log(message);
   }
 
-  httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-  }
-  private songURL = 'http://127.0.0.1:5000/api/';
 
+/*
   getArtists(): Observable<Artist[]> {
-    const url = `${this.songURL}/getartists`;
+    const url = `${this.apiUrl}/getartists`;
     console.log(url);
     return this.http.get<Artist[]>(url).pipe(
       tap(_ => this.log('获取艺术家列表')),
       catchError(this.handleError<Artist[]>('getArtists', []))
     );
-  }
-    searchSongs(singer: string): Observable<Song[]> {
-    console.log(`搜索歌手: ${singer} 的歌曲`);
-    const url = `${this.songURL}/api/searchsong?singer=${encodeURIComponent(singer)}`;
-    return this.http.get<Song[]>(url).pipe(
-      tap(_ => this.log(`搜索到歌手: ${singer} 的歌曲`)),
-      catchError(this.handleError<Song[]>('searchSongs', []))
-    );
-  }
+  }*/
+  searchSongs(keyword: string): Observable<any> {
+    const url = [
+      this.apiUrl,
+      "/search?",
+      `keyword=${encodeURIComponent(keyword)}`,
+    ].join("")
 
+    return this.http.get(url)
+  }
+/*
   updateSong(song: Song): Observable<any> {
     const url = `${this.songURL}/updatesong/${song.id}`;
     const updateData = {
-      song_name: song.song_name,
-      singer: song.singer,
+      realName: song.realName,
+      artist: song.artist,
       file_url: song.file_url,
       hits: song.hits,
-      style: song.style
+      genre: song.genre
     };
 
     return this.http.post(url, updateData, this.httpOptions).pipe(
-      tap(_ => this.log(`更新歌曲：${song.song_name}`)),
+      tap(_ => this.log(`更新歌曲：${song.realName}`)),
       catchError(this.handleError<any>('updateSong'))
     );
   }
   addSong(song: Song): Observable<any> {
     console.log(song);
     return this.http.post<any>(`${this.songURL}/addsong`, song, this.httpOptions).pipe(
-      tap(() => this.log(`添加新的歌曲信息，歌曲名为${song.song_name}`)),
+      tap(() => this.log(`添加新的歌曲信息，歌曲名为${song.realName}`)),
       catchError(this.handleError<any>('addSong'))
     );
   }
@@ -78,5 +81,5 @@ export class SongService {
       catchError(this.handleError<any>('deleteSong'))
     );
   }
-
+*/
 }

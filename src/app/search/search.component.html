@@ -1,15 +1,19 @@
 <div class="search-box">
-  <input type="text" placeholder="搜索歌曲，艺人，曲风..."/>
-  <button>搜索</button>
+  <input
+    type="text"
+    placeholder="搜索歌曲，艺人，曲风..."
+    class="search-input"
+  />
+  <button class="search-btn">搜索</button>
 </div>
 
 <div class="search-result">
   <div class="search-result-title">
     <span>搜索结果</span>
   </div>
-  <div>
-    我是分割线
-  </div>
+  <div class="w-100
+  border-t border-gray-400 mt-4 mb-4"></div>
+
 
   <section>
     <ul class="result-list">
@@ -17,7 +21,17 @@
         <li class="list-item">
           <div>我是图标哦</div>
           <div class="flex-1">{{ item.title }}</div>
-          <div>收藏按钮</div>
+          <div>
+            <button type="button"
+                    class="rounded-lg border border-yellow-500 bg-yellow-500 px-4 py-1 text-center text-sm font-medium
+                     text-white shadow-sm transition-all
+                     hover:border-yellow-700 hover:bg-yellow-700
+                      focus:ring focus:ring-yellow-200
+                      disabled:cursor-not-allowed
+                      disabled:border-yellow-300
+                      disabled:bg-yellow-300">
+              收藏</button>
+          </div>
           <div>{{ item.artist }}</div>
           <div>欧美流行</div>
           <div>点击量：{{ item.hits }}</div>

@@ -47,13 +47,14 @@
         type="text"
         class="search-input"
         placeholder="搜索音乐"
-        value=""
+        [(ngModel)]="searchKeyword"
       />
-      <button class="search-btn">
+      <button class="search-btn" (click)="doSearch()">
         <i class="icon_search sprite"></i>
         <span class="icon_txt">搜索</span>
       </button>
     </div>
+
     <div *ngIf="!isLogin()" class="login-btn" (click)="toggleDialogVisible()">
       <span class="mod_top_login">
         <a>登录</a>

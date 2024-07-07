@@ -8,7 +8,7 @@ export interface Artist {
 
 export interface Song {
   id: number;
-  real_name: string;
+  realName: string;
   artist: string;
   file_url: string;
   hits: number;
