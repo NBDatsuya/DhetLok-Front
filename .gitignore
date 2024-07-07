@@ -1,0 +1,6 @@
+/.angular/**
+/node_modules/**
+/src/assets/**
+/src/assets
+/.idea
+/.idea/**

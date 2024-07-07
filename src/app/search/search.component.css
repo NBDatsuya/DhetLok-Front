@@ -1,0 +1,23 @@
+@tailwind components;
+@layer components{
+  .result-list{
+    @apply divide-y divide-slate-100
+  }
+  .list-item{
+    @apply flex gap-4 px-4 py-3 space-x-3 hover:bg-slate-100
+  }
+  .search-box{
+    @apply flex flex-row space-x-4 justify-center
+  }
+  .search-btn {
+    @apply bg-[#3d5245] cursor-pointer text-slate-100 rounded-lg
+    py-2 px-4
+  }
+  .search-input{
+    @apply py-2 text-[#3d5245] px-2 rounded-lg outline-none
+    border border-[#3d5245]
+  }
+  .search-result-title{
+    @apply text-xl font-bold text-[#3d5245]
+  }
+}
