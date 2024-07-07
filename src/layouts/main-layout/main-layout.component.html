@@ -1,0 +1,150 @@
+<div class="flex flex-col min-h-screen">
+  <div class="navbar">
+    <h1 class="logo">
+      <a aria-current="page" class="active" routerLink="/home">
+        沙丁鱼音乐
+      </a>
+    </h1>
+
+    <ul class="navbar-menu" role="nav">
+      <li class="nav-item">
+        <a
+          aria-current="page"
+          class="top_nav__link top_nav__link--current"
+          title="音乐人"
+          href="/artist"
+        >音乐人</a>
+      </li>
+      <li class="nav-item">
+        <a
+          href="/top-list"
+          class="top_nav__link"
+          title="排行榜"
+          rel="noopener noreferrer"
+          >排行榜</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="top_nav__link"
+           title="我的音乐"
+           href="/my-music">
+          我的音乐</a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          href="/style"
+          class="top_nav__link"
+          title="曲风分类"
+          rel="noopener noreferrer"
+          target="_blank"
+        >曲风分类</a>
+      </li>
+    </ul>
+
+    <div class="search-bar" role="search">
+      <input
+        type="text"
+        class="search-input"
+        placeholder="搜索音乐"
+        value=""
+      />
+      <button class="search-btn">
+        <i class="icon_search sprite"></i>
+        <span class="icon_txt">搜索</span>
+      </button>
+    </div>
+    <div *ngIf="!isLogin()" class="login-btn" (click)="toggleDialogVisible()">
+      <span class="mod_top_login">
+        <a>登录</a>
+      </span>
+    </div>
+    <div *ngIf="isLogin()" class="flex flex-row space-x-3">
+      <div>您好，{{ sessionInfo().username }}</div>
+      <div
+        (click)="logout()"
+        class="underline-blue-600 underline text-blue-600 cursor-pointer">退出登录</div>
+    </div>
+  </div>
+
+  <main>
+    <router-outlet/>
+  </main>
+  <footer>
+    <p> 沙丁鱼 DhetLok </p>
+    <p>平阳鱼韵科技股份有限公司版权所有 © S1981-E2024</p>
+    <p class="text-blue-600 hover:underline cursor-pointer"
+       (click)="goLogin()"
+    >后台入口</p>
+  </footer>
+</div>
+
+<div
+  *ngIf="loginDialogVisible"
+  class="fixed top-0 left-0 z-20 flex items-center justify-center w-screen h-screen bg-slate-300/20 backdrop-blur-sm"
+  aria-labelledby="header-4a content-4a"
+  aria-modal="true"
+  tabindex="-1"
+  role="dialog">
+  <!-- Modal -->
+  <div
+    class="flex max-h-[90vh] max-w-sm flex-col gap-4 overflow-hidden rounded bg-white p-6 text-slate-500 shadow-xl shadow-slate-700/10"
+    id="modal" role="document">
+    <!-- Modal header -->
+    <header id="header-4a" class="flex items-center">
+      <h3 class="flex-1 text-lg font-medium text-slate-700">登陆</h3>
+      <button
+        (click)="toggleDialogVisible()"
+        class="inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide transition duration-300 rounded-full focus-visible:outline-none justify-self-center whitespace-nowrap text-[#3d5245] hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 disabled:cursor-not-allowed disabled:text-emerald-300 disabled:shadow-none disabled:hover:bg-transparent"
+        aria-label="close dialog">
+        <span class="relative only:-mx-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+               stroke-width="1.5" role="graphics-symbol" aria-labelledby="title-79 desc-79">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </span>
+      </button>
+    </header>
+    <!-- Modal body -->
+    <div id="content-4a" class="flex-1">
+      <div class="flex flex-col gap-3">
+        <!-- Input field -->
+        <div class="relative">
+          <input id="id-b03" type="text" placeholder="用户名"
+                 [(ngModel)]="username"
+                 class="relative w-full h-10 px-4 text-sm placeholder-transparent transition-all border rounded outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"/>
+          <label
+            class="absolute left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent">
+            用户名
+          </label>
+        </div>
+        <!-- Input field -->
+        <div class="relative my-3">
+          <input type="password" placeholder="密码"
+                 [(ngModel)]="password"
+                 class="relative w-full h-10 px-4 pr-12 text-sm placeholder-transparent transition-all border rounded outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"/>
+          <label
+            class="absolute left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent">
+            密码 </label>
+          <svg xmlns="http://www.w3.org/2000/svg"
+               class="absolute top-2.5 right-4 h-5 w-5 cursor-pointer stroke-slate-400 peer-disabled:cursor-not-allowed"
+               fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <!-- Modal actions -->
+    <div class="flex justify-center gap-2">
+      <button
+        (click)="login()"
+        class="inline-flex items-center justify-center w-full h-10 gap-2 px-5 text-sm font-medium tracking-wide text-white transition duration-300 rounded whitespace-nowrap bg-[#3d5245] hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
+        <span>登陆</span>
+      </button>
+    </div>
+  </div>
+</div>
+<!-- End Modal with form -->
+
+
