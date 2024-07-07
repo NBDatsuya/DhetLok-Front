@@ -1,0 +1,30 @@
+<div class="collect-result">
+  <div class="text-xl font-bold text-[#3d5245]">
+    <span>音乐人信息</span>
+  </div>
+  <div class="w-100
+  border-t border-gray-400 mt-4 mb-4"></div>
+
+
+  <section>
+    <ul class="result-list">
+        <li class="list-item" *ngFor="let item of artists; let i = index;">
+          <img [src]="'http://localhost:5000/api/artist/avatar/'+item.imgUrl"
+               alt="Item Image" class="w-32 h-32 hover:w-36 hover:h-36">
+          <div class="flex-1">{{ item.realName }}</div>
+          <button type="button"
+                  class="rounded-lg border border-yellow-500 bg-yellow-500 px-4 py-1 text-center text-sm font-medium
+                     text-white shadow-sm transition-all
+                     hover:border-yellow-700 hover:bg-yellow-700
+                      focus:ring focus:ring-yellow-200
+                      disabled:cursor-not-allowed
+                      disabled:border-yellow-300
+                      disabled:bg-yellow-300">
+           详情</button>
+          <div class="flex-shrink">华语</div>
+          <div *ngIf="item.hot">热门</div>
+        </li>
+    </ul>
+  </section>
+</div>
+

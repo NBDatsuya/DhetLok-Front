@@ -2,7 +2,7 @@ import { Component , OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { SongService } from "../song.service";
+import { SongService } from "../../service/song.service";
 import { FormsModule } from '@angular/forms';
 
 interface Song {
@@ -18,8 +18,8 @@ interface Song {
   selector: 'app-top-list',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './toplist.component.html',
-  styleUrl: './toplist.component.css'
+  templateUrl: './top-list.component.html',
+  styleUrl: './top-list.component.css'
 })
 export class ToplistComponent implements OnInit {
   searchResult: Song[] = [];

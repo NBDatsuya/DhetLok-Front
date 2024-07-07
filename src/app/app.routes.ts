@@ -24,11 +24,11 @@ export const routes: Routes = [
         path:'artist',
         loadComponent: ()=>import('./artist/artist.component').then(c=>c.ArtistComponent)
       },{
-        path:'my-music',
-        loadComponent: ()=>import('./collect/collect.component').then(c=>c.MyMusicComponent)
+        path:'collect',
+        loadComponent: ()=>import('./collect/collect.component').then(c=>c.CollectComponent)
       },{
         path:'genre',
-        loadComponent: ()=>import('./genre/genre.component').then(c=>c.StyleComponent)
+        loadComponent: ()=>import('./genre/genre.component').then(c=>c.GenreComponent)
       }
     ]
   }

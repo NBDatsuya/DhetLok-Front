@@ -1,29 +1,48 @@
-import {Component} from '@angular/core';
-import {NgIf, NgOptimizedImage} from "@angular/common";
-import {AuthService} from '../auth.service';
+import {Component, OnInit} from '@angular/core';
+import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import {AuthService} from '../../service/auth.service';
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import {ArtistService} from "../../service/artist.service";
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
   imports: [
-    NgIf
+    NgIf,
+    NgForOf
   ],
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   loginDialogVisible = false;
+
   username: string = '';
   password: string = '';
 
-  /*
+
     constructor(
       private router: Router,
-      private authService: AuthService
+      private artistService: ArtistService
     ) {
-    }*/
+    }
+
+  ngOnInit(): void {
+    this.refreshList();
+  }
+
+  refreshList(): void {
+    this.artistService.getHotArtists().subscribe(
+      (res: any) => {
+        console.log(res)
+        this.artists = res["data"]
+      },
+      (error) => {
+        console.error('Error fetching artists:', error);
+      }
+    );
+  }
 
   toggleDialogVisible() {
     this.loginDialogVisible = !this.loginDialogVisible
@@ -46,4 +65,14 @@ export class HomeComponent {
         }
       });*/
   }
+
+  artists = [{
+    "id": 0,
+    "realName": "real_name",
+    'imgUrl': "imgUrl",
+    "genre":0,
+    "hot":false
+  },]
+
+
 }
